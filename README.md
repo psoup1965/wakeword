@@ -21,13 +21,16 @@ Connect the INMP441 to your ESP32 board as follows:
 
 This project requires a MicroPython firmware version that includes the `I2S` module. You can download the latest firmware from the [MicroPython website](https://micropython.org/download/esp32/). Make sure to select a stable version that includes I2S support.
 
-To flash the firmware to your ESP32, you can use the `esptool.py` utility. You can find instructions on how to do this in the [ESP32 documentation](https://docs.espressif.com/projects/esptool/en/latest/esp32/esptool/basic-commands.html).
+To flash the firmware to your ESP32, you can use the `esptool` utility. You can find instructions on how to do this in the [ESP32 documentation](https://docs.espressif.com/projects/esptool/en/latest/esp32/esptool/basic-commands.html).
+Sample Code: esptool erase_flash # start new 
+esptool --baud 460800 write_flash 0x1000 ESP32_GENERIC-20250809-v1.26.0.bin #flash the downloaded firmware from Micropython https://micropython.org/download/ESP32_GENERIC/
+
 
 ## Running the Test
 
 1.  Connect the ESP32 to your computer.
-2.  Upload the `src/main.py` file to the root directory of your ESP32's filesystem. You can use a tool like `ampy` or the Thonny IDE to do this.
-3.  Open a serial terminal connected to your ESP32.
+2.  Upload the `src/main.py` file to the root directory of your ESP32's filesystem. You can use a tool like Thonny IDE to do this. Start Thonny from the command line - type thonny Go to Tools -> options -> Interperter and select MicroPython (ESP32) save the code to the device as main.py and click run
+3.  Open a serial terminal connected to your ESP32. (at the bottom of Thonny)
 4.  Reset the ESP32.
 5.  The script will start running automatically. You should see output in the terminal indicating that the I2S interface has been initialized and that audio samples are being read.
 
