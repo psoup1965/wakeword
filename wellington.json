@@ -5,6 +5,7 @@
   "website": "Your Website (optional)",
   "model": "wellington.tflite",
   "trained_languages": ["en"],
+  "tensor_arena_size": 30000,
   "version": 1,
   "micro": {
     "probability_cutoff": 0.5,
