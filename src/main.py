@@ -50,8 +50,21 @@ def main():
             # Read audio samples from the I2S interface
             num_read = audio_in.readinto(samples)
             if num_read > 0:
-                print("Read {} bytes: {}".format(num_read, samples))
-            time.sleep_ms(100)
+                # Calculate RMS of the samples
+                sum_sq = 0
+                num_samples = num_read // 2
+                for i in range(0, num_read, 2):
+                    # Combine two bytes to a 16-bit signed integer (little-endian)
+                    sample = (samples[i+1] << 8) | samples[i]
+                    if sample > 32767: # convert to signed
+                        sample -= 65536
+                    sum_sq += sample * sample
+
+                mean_sq = sum_sq / num_samples
+                rms = mean_sq ** 0.5
+                print("RMS:", int(rms))
+
+            time.sleep_ms(10) # Lower sleep time for more responsive output
         except KeyboardInterrupt:
             print("Stopping...")
             break
