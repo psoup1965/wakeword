@@ -1,15 +1,15 @@
 {
   "type": "micro",
-  "wake_word": "okay nabu",
-  "author": "Kevin Ahrendt",
-  "website": "https://github.com/psoup1965/",
+  "wake_word": "Wellington",
+  "author": "paul suppo",
+  "website": "Your Website (optional)",
   "model": "wellington.tflite",
-  "version": 2,
+  "trained_languages": ["en"],
+  "version": 1,
   "micro": {
-    "probability_cutoff": 0.97,
-    "sliding_window_size": 5,
+    "probability_cutoff": 0.5,
     "feature_step_size": 10,
-    "tensor_arena_size": 22860,
-    "minimum_esphome_version": "2024.7"
+    "sliding_window_size": 5,
+    "tensor_arena_size": 26080
   }
 }
